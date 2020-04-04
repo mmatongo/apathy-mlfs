@@ -1,27 +1,27 @@
 # tc:		libstdc++ from gcc 9.2.0
 
 # 0
-export CC="${MLFS_TARGET}-gcc"
-export CXX="${MLFS_TARGET}-g++"
-export AR="${MLFS_TARGET}-ar"
-export AS="${MLFS_TARGET}-as"
-export RANLIB="${MLFS_TARGET}-ranlib"
-export LD="${MLFS_TARGET}-ld"
+export CC="${MLFS_TARGET}-gcc" &&
+export CXX="${MLFS_TARGET}-g++" &&
+export AR="${MLFS_TARGET}-ar" &&
+export AS="${MLFS_TARGET}-as" &&
+export RANLIB="${MLFS_TARGET}-ranlib" &&
+export LD="${MLFS_TARGET}-ld" &&
 export STRIP="${MLFS_TARGET}-strip"
 
 # 1
-patch -Np0 -i "${patchdir}"/gcc-9.2.0/0010-ldbl128-config.patch
-patch -Np0 -i "${patchdir}"/gcc-9.2.0/ada-shared.patch
-patch -Np0 -i "${patchdir}"/gcc-9.2.0/darn.patch
-patch -Np0 -i "${patchdir}"/gcc-9.2.0/fix-cxxflags-passing.patch
-patch -Np0 -i "${patchdir}"/gcc-9.2.0/fix-musl-execinfo.patch
-patch -Np0 -i "${patchdir}"/gcc-9.2.0/gccgo-musl.patch
-patch -Np0 -i "${patchdir}"/gcc-9.2.0/invalid_tls_model.patch
-patch -Np0 -i "${patchdir}"/gcc-9.2.0/libffi_gnulinux.patch
-patch -Np0 -i "${patchdir}"/gcc-9.2.0/libgcc-musl-ldbl128-config.patch
-patch -Np1 -i "${patchdir}"/gcc-9.2.0/libgnarl-musl.patch
-patch -Np0 -i "${patchdir}"/gcc-9.2.0/musl-ada.patch
-patch -Np0 -i "${patchdir}"/gcc-9.2.0/no-stack_chk_fail_local.patch
+patch -Np0 -i "${patchdir}"/gcc-9.2.0/0010-ldbl128-config.patch &&
+patch -Np0 -i "${patchdir}"/gcc-9.2.0/ada-shared.patch &&
+patch -Np0 -i "${patchdir}"/gcc-9.2.0/darn.patch &&
+patch -Np0 -i "${patchdir}"/gcc-9.2.0/fix-cxxflags-passing.patch &&
+patch -Np0 -i "${patchdir}"/gcc-9.2.0/fix-musl-execinfo.patch &&
+patch -Np0 -i "${patchdir}"/gcc-9.2.0/gccgo-musl.patch &&
+patch -Np0 -i "${patchdir}"/gcc-9.2.0/invalid_tls_model.patch &&
+patch -Np0 -i "${patchdir}"/gcc-9.2.0/libffi_gnulinux.patch &&
+patch -Np0 -i "${patchdir}"/gcc-9.2.0/libgcc-musl-ldbl128-config.patch &&
+patch -Np1 -i "${patchdir}"/gcc-9.2.0/libgnarl-musl.patch &&
+patch -Np0 -i "${patchdir}"/gcc-9.2.0/musl-ada.patch &&
+patch -Np0 -i "${patchdir}"/gcc-9.2.0/no-stack_chk_fail_local.patch &&
 patch -Np0 -i "${patchdir}"/gcc-9.2.0/ppc64-pure64.patch
 
 # 2
