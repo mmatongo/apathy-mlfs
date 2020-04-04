@@ -1,25 +1,25 @@
 # set mlfs, create partition and mount it to $MLFS
 export    MLFS=/mnt/mlfs
-mkfs.etx4 /dev/sdXY
-mkdir -pv $MLFS
-mount     /dev/sdXY $MLFS
+sudo mkfs.ext4 /dev/sdXY
+sudo mkdir -pv $MLFS
+sudo mount     /dev/sdXY $MLFS
 
 # create directories to build tools and link them to host's root directory:
-mkdir -v $MLFS/cross-tools
-mkdir -v $MLFS/tools
-ln -sv   $MLFS/cross-tools /
-ln -sv   $MLFS/tools /
+sudo mkdir -v $MLFS/cross-tools &&
+sudo mkdir -v $MLFS/tools &&
+sudo ln -sv   $MLFS/cross-tools / &&
+sudo ln -sv   $MLFS/tools /
 
 # create the patch, source and table directories
-export patchdir="${MLFS}/mss/work/patches"
-export saucedir="${MLFS}/mss/work/sources"
-export filesdir="${MLFS}/mss/work/files"
+export patchdir="${MLFS}/noir/work/patches" &&
+export saucedir="${MLFS}/noir/work/sources" &&
+export filesdir="${MLFS}/noir/work/files"
 
-mkdir -pv "${patchdir}"
-mkdir -pv "${saucedir}"
-mkdir -pv "${filesdir}"
+sudo mkdir -pv "${patchdir}" &&
+sudo mkdir -pv "${saucedir}" &&
+sudo mkdir -pv "${filesdir}"
 
-mkdir -pv $MLFS/mss/work/table
+sudo mkdir -pv $MLFS/noir/work/table
 
 # i >>instead of creating these dirs, you can also symlink
 # the files, patches and sources files from the cloned repo.
@@ -33,10 +33,10 @@ groupadd mlfs
 useradd -s /bin/yash -g mlfs -m -k /dev/null mlfs
 passwd mlfs
 
-chown -v  mlfs $MLFS/cross-tools
-chown -vR mlfs $MLFS/mss
-chmod -v  a+wt $MLFS/mss
-chown -v  mlfs $MLFS/tools
+sudo chown -v  danielm $MLFS/cross-tools &&
+sudo chown -vR danielm $MLFS/noir &&
+sudo chmod -v  a+wt $MLFS/noir &&
+sudo chown -v  danielm $MLFS/tools
 
 # now run as mlfs user.
 # all toolchain software should be built as this user, unless specified.
@@ -59,10 +59,10 @@ set --hist-space
 bindkey -av '\^L' clear-and-redraw-all
 case $- in (*m*) trap - TSTP TTIN TTOU; esac
 
-export MLFS=/mnt/mlfs
-export patchdir="${MLFS}/mss/work/patches"
-export saucedir="${MLFS}/mss/work/sources"
-export filesdir="${MLFS}/mss/work/files"
+export MLFS=/mnt/mlfs &&
+export patchdir="${MLFS}/noir/work/patches" &&
+export saucedir="${MLFS}/noir/work/sources" &&
+export filesdir="${MLFS}/noir/work/files" 
 
 export LC_ALL=POSIX
 export PATH=/cross-tools/bin:/tools/bin:/bin:/usr/bin
@@ -75,7 +75,7 @@ export MLFS_HOST="x86_64-cross-linux-gnu"
 export MLFS_ARCH=x86
 export MLFS_CPU="x86-64"
 
-unset CFLAGS
+unset CFLAGS &&
 unset CXXFLAGS
 
 alias l="ls -Askh --color=tty"
@@ -92,10 +92,10 @@ env -i HOME=$HOME TERM=$TERM /bin/yash
 # source .yashrc and check the variables
 . /home/mlfs/.yashrc
 
-printf " > MLFS\t: $MLFS\n"
-printf " > LC_ALL\t: $LC_ALL\n"
-printf " > PATH\t: $PATH\n"
-printf " > MLFS_TARGET\t: $MLFS_TARGET\n"
-printf " > MLFS_HOST\t: $MLFS_HOST\n"
-printf " > MLFS_ARCH\t: $MLFS_ARCH\n"
-printf " > MLFS_CPU\t: $MLFS_CPU\n"
+printf " > MLFS\t: $MLFS\n" &&
+printf " > LC_ALL\t: $LC_ALL\n" &&
+printf " > PATH\t: $PATH\n" &&
+printf " > MLFS_TARGET\t: $MLFS_TARGET\n" &&
+printf " > MLFS_HOST\t: $MLFS_HOST\n" &&
+printf " > MLFS_ARCH\t: $MLFS_ARCH\n" &&
+printf " > MLFS_CPU\t: $MLFS_CPU\n" 
