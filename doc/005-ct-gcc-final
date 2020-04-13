@@ -31,9 +31,9 @@ mkdir build && cd  build
 AR=ar LDFLAGS="-Wl,-rpath,/cross-tools/lib" \
 ../configure \
  --prefix=/cross-tools \
- --build=${MLFS_HOST} \
- --host=${MLFS_HOST} \
- --target=${MLFS_TARGET} \
+ --build=${NL_HOST} \
+ --host=${NL_HOST} \
+ --target=${NL_TARGET} \
  --disable-multilib \
  --with-sysroot=/cross-tools \
  --disable-nls \
@@ -52,7 +52,7 @@ AR=ar LDFLAGS="-Wl,-rpath,/cross-tools/lib" \
  --disable-libssp 
 
 # 6
-make AS_FOR_TARGET="${MLFS_TARGET}-as" LD_FOR_TARGET="${MLFS_TARGET}-ld"
+make AS_FOR_TARGET="${NL_TARGET}-as" LD_FOR_TARGET="${NL_TARGET}-ld"
 
 # 7
 make install
