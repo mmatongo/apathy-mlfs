@@ -15,10 +15,10 @@ mkdir -v build && cd  build
 # 3
 ../configure \
  --prefix=/cross-tools \
- --build=${MLFS_HOST} \
- --host=${MLFS_HOST} \
- --target=${MLFS_TARGET} \
- --with-sysroot=/cross-tools/${MLFS_TARGET} \
+ --build=${NL_HOST} \
+ --host=${NL_HOST} \
+ --target=${NL_TARGET} \
+ --with-sysroot=/cross-tools/${NL_TARGET} \
  --disable-nls \
  --with-newlib \
  --disable-libitm \
