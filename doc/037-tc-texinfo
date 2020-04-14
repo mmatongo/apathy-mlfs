@@ -11,10 +11,7 @@ export LD="${NL_TARGET}-ld" &&
 export STRIP="${NL_TARGET}-strip"
 
 # 1
-./configure \
- --build=${NL_HOST} \
- --host=${NL_TARGET} \
- --prefix=/tools
+./configure --prefix=/tools
 
 # 2
 make && make install
