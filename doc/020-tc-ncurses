@@ -27,3 +27,6 @@ sed -i '/LIBTOOL_INSTALL/d' c++/Makefile.in
 
 # 3
 make && make install
+
+# 4
+ln -s libncursesw.so /tools/lib/libncurses.so
