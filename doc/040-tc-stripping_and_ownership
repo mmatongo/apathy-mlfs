@@ -13,4 +13,4 @@ find /tools/{lib,libexec} -name \*.la -delete
 
 # 4 >> change the ownership of /tools dir to root
 # since there won't be a mlfs user in chroot
-chown -R root:root $MLFS/tools  
+chown -R root:root $NL/tools  
