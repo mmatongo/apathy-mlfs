@@ -1,13 +1,13 @@
 # tc:		gcc 9.2.0 - pass 2
 
 # 0
-export CC="${MLFS_TARGET}-gcc"
-export CXX="${MLFS_TARGET}-g++"
-export AR="${MLFS_TARGET}-ar"
-export AS="${MLFS_TARGET}-as"
-export RANLIB="${MLFS_TARGET}-ranlib"
-export LD="${MLFS_TARGET}-ld"
-export STRIP="${MLFS_TARGET}-strip"
+export CC="${NL_TARGET}-gcc" &&
+export CXX="${NL_TARGET}-g++" &&
+export AR="${NL_TARGET}-ar" &&
+export AS="${NL_TARGET}-as" &&
+export RANLIB="${NL_TARGET}-ranlib" &&
+export LD="${NL_TARGET}-ld" &&
+export STRIP="${NL_TARGET}-strip"
 
 # 1
 tar -xf "${saucedir}"/mpfr-4.0.2.tar.xz && mv -v mpfr-4.0.2 mpfr &&
@@ -33,7 +33,7 @@ patch -Np0 -i "${patchdir}"/gcc-9.2.0/ppc64-pure64.patch
 # 3 >> create a full version of the internal header using a command that is
 #identical to what the gcc build system creates in normal circumstances with:
 cat gcc/limitx.h gcc/glimits.h gcc/limity.h > \
- $(dirname $($MLFS_TARGET-gcc -print-libgcc-file-name))/include-fixed/limits.h
+ $(dirname $($NL_TARGET-gcc -print-libgcc-file-name))/include-fixed/limits.h
 
 # 4 >> change the location of gcc's default dynamic linker to use the one installed in /tools
 for file in gcc/config/{linux,i386/linux{,64}}.h
@@ -54,9 +54,9 @@ sed -e '/m64=/s/lib64/lib/' -i.orig gcc/config/i386/t-linux64
 # 6
 mkdir -v build && cd build
 ../configure \
- --target=${MLFS_TARGET} \
- --build=${MLFS_HOST} \
- --host=${MLFS_TARGET} \
+ --target=${NL_TARGET} \
+ --build=${NL_HOST} \
+ --host=${NL_TARGET} \
  --prefix=/tools \
  --with-local-prefix=/tools \
  --with-native-system-header-dir=/tools/include \
