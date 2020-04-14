@@ -21,7 +21,7 @@ unset GCC_INCLUDEDIR
 
 # 5 >> sanity check
 echo 'int main(){}' > dummy.c
-${MLFS_TARGET}-gcc -B/tools/lib dummy.c
+${NL_TARGET}-gcc -B/tools/lib dummy.c
 readelf -l a.out | grep ': /tools'
 
 # i >> output should be:
