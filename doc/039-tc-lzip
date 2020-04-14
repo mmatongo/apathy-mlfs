@@ -2,13 +2,13 @@
 # sauce:	http://download.savannah.gnu.org/releases/lzip/lzip-1.21.tar.gz
 
 # 0
-export CC="${MLFS_TARGET}-gcc"
-export CXX="${MLFS_TARGET}-g++"
-export AR="${MLFS_TARGET}-ar"
-export AS="${MLFS_TARGET}-as"
-export RANLIB="${MLFS_TARGET}-ranlib"
-export LD="${MLFS_TARGET}-ld"
-export STRIP="${MLFS_TARGET}-strip"
+export CC="${NL_TARGET}-gcc" &&
+export CXX="${NL_TARGET}-g++" &&
+export AR="${NL_TARGET}-ar" &&
+export AS="${NL_TARGET}-as" &&
+export RANLIB="${NL_TARGET}-ranlib" &&
+export LD="${NL_TARGET}-ld" &&
+export STRIP="${NL_TARGET}-strip"
 
 # 1
 # i >> configure doesn't accept --host and --build flags
@@ -16,7 +16,7 @@ export STRIP="${MLFS_TARGET}-strip"
 
 # 2 >> configure doesn't update g++ and tries to build with host g++
 # run sed to fix it
-sed -i 's/CXX = g++/CXX = ${MLFS_TARGET}-g++/g' Makefile
+sed -i 's/CXX = g++/CXX = ${NL_TARGET}-g++/g' Makefile
 
 # 3 
 make && make install
