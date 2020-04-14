@@ -3,13 +3,13 @@
 #		https://github.com/arsv/perl-cross/releases/download/1.3/perl-cross-1.3.tar.gz
 
 # 0
-export CC="${MLFS_TARGET}-gcc"
-export CXX="${MLFS_TARGET}-g++"
-export AR="${MLFS_TARGET}-ar"
-export AS="${MLFS_TARGET}-as"
-export RANLIB="${MLFS_TARGET}-ranlib"
-export LD="${MLFS_TARGET}-ld"
-export STRIP="${MLFS_TARGET}-strip"
+export CC="${NL_TARGET}-gcc" &&
+export CXX="${NL_TARGET}-g++" &&
+export AR="${NL_TARGET}-ar" &&
+export AS="${NL_TARGET}-as" &&
+export RANLIB="${NL_TARGET}-ranlib" &&
+export LD="${NL_TARGET}-ld" &&
+export STRIP="${NL_TARGET}-strip"
 
 # 1 >> patch for musl locale issues
 patch -p1 < "${patchdir}"/perl-5.30/musl-locale.patch
@@ -26,7 +26,7 @@ mv -v ../perl-cross-1.3/utils/* utils/
 # 3
 ./configure \
  --prefix=/tools \
- --target=${MLFS_TARGET}
+ --target=${NL_TARGET}
 
 # 4
 make
