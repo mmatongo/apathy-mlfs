@@ -7,7 +7,7 @@ make mrproper
 patch -p1 < "${patchdir}"/linux-5.2.14/5.2-deblob-gnu.patch
 
 # 3 >> install to a destdir and clean
-make ARCH=${MLFS_ARCH} INSTALL_HDR_PATH=dest headers_install
+make ARCH=${NL_ARCH} INSTALL_HDR_PATH=dest headers_install
 
 find dest/include \( -name .install -o -name ..install.cmd \) -delete
 
