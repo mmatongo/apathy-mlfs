@@ -2,19 +2,19 @@
 # sauce:	https://www.sourceware.org/pub/bzip2/bzip2-1.0.8.tar.gz
 
 # 0
-export CC="${MLFS_TARGET}-gcc"
-export CXX="${MLFS_TARGET}-g++"
-export AR="${MLFS_TARGET}-ar"
-export AS="${MLFS_TARGET}-as"
-export RANLIB="${MLFS_TARGET}-ranlib"
-export LD="${MLFS_TARGET}-ld"
-export STRIP="${MLFS_TARGET}-strip"
+export CC="${NL_TARGET}-gcc" &&
+export CXX="${NL_TARGET}-g++" &&
+export AR="${NL_TARGET}-ar" &&
+export AS="${NL_TARGET}-as" &&
+export RANLIB="${NL_TARGET}-ranlib" &&
+export LD="${NL_TARGET}-ld" &&
+export STRIP="${NL_TARGET}-strip"
 
 # 1 >> fix the makefiles, ensures installation of symbolic links are
 # relative and the man pages are installed into the correct location.
-cp Makefile{,.orig}
-sed -e "/^all:/s/ test//" Makefile.orig > Makefile
-sed -i 's@\(ln -s -f \)$(PREFIX)/bin/@\1@' Makefile
+cp Makefile{,.orig} &&
+sed -e "/^all:/s/ test//" Makefile.orig > Makefile &&
+sed -i 's@\(ln -s -f \)$(PREFIX)/bin/@\1@' Makefile &&
 sed -i "s@(PREFIX)/man@(PREFIX)/share/man@g" Makefile
 
 # 2
