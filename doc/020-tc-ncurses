@@ -2,13 +2,13 @@
 # sauce:	http://ftp.gnu.org/gnu/ncurses/ncurses-6.1.tar.gz
 
 # 0
-export CC="${MLFS_TARGET}-gcc"
-export CXX="${MLFS_TARGET}-g++"
-export AR="${MLFS_TARGET}-ar"
-export AS="${MLFS_TARGET}-as"
-export RANLIB="${MLFS_TARGET}-ranlib"
-export LD="${MLFS_TARGET}-ld"
-export STRIP="${MLFS_TARGET}-strip"
+export CC="${NL_TARGET}-gcc" &&
+export CXX="${NL_TARGET}-g++" &&
+export AR="${NL_TARGET}-ar" &&
+export AS="${NL_TARGET}-as" &&
+export RANLIB="${NL_TARGET}-ranlib" &&
+export LD="${NL_TARGET}-ld" &&
+export STRIP="${NL_TARGET}-strip"
 
 # 1 >> ensure that gawk is found first during configuration
 sed -i '/LIBTOOL_INSTALL/d' c++/Makefile.in
@@ -16,8 +16,8 @@ sed -i '/LIBTOOL_INSTALL/d' c++/Makefile.in
 # 2
 ./configure \
  --prefix=/tools \
- --build=${MLFS_HOST} \
- --host=${MLFS_TARGET} \
+ --build=${NL_HOST} \
+ --host=${NL_TARGET} \
  --with-shared \
  --without-debug \
  --without-ada \
