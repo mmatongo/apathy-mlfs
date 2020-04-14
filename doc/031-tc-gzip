@@ -2,18 +2,18 @@
 # sauce:	http://ftp.gnu.org/gnu/gzip/gzip-1.10.tar.xz
 
 # 0
-export CC="${MLFS_TARGET}-gcc"
-export CXX="${MLFS_TARGET}-g++"
-export AR="${MLFS_TARGET}-ar"
-export AS="${MLFS_TARGET}-as"
-export RANLIB="${MLFS_TARGET}-ranlib"
-export LD="${MLFS_TARGET}-ld"
-export STRIP="${MLFS_TARGET}-strip"
+export CC="${NL_TARGET}-gcc" &&
+export CXX="${NL_TARGET}-g++" &&
+export AR="${NL_TARGET}-ar" &&
+export AS="${NL_TARGET}-as" &&
+export RANLIB="${NL_TARGET}-ranlib" &&
+export LD="${NL_TARGET}-ld" &&
+export STRIP="${NL_TARGET}-strip"
 
 # 1
 ./configure \
- --build=${MLFS_HOST} \
- --host=${MLFS_TARGET} \
+ --build=${NL_HOST} \
+ --host=${NL_TARGET} \
  --prefix=/tools
 
 # Install to toolchain
