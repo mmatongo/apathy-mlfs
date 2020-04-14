@@ -2,9 +2,9 @@
 
 # 1 >> adjust the linker
 mv -v /tools/bin/ld /tools/bin/ld-old
-mv -v /tools/x86_64-mlfs-linux-musl/bin/ld /tools/x86_64-mlfs-linux-musl/bin/ld-old
+mv -v /tools/x86_64-noir-linux-musl/bin/ld /tools/x86_64-noir-linux-musl/bin/ld-old
 mv -v /tools/bin/ld-new /tools/bin/ld
-ln -sv /tools/bin/ld /tools/x86_64-mlfs-linux-musl/bin/ld
+ln -sv /tools/bin/ld /tools/x86_64-noir-linux-musl/bin/ld
 
 # i >> you can use the busybox binary we compiled for ash to inspect the specs file.
 # use `busybox less tempspecfile` when needed. you can search via the `/` key.
@@ -18,13 +18,21 @@ gcc -dumpspecs | sed -e 's@/tools@@g' \
 # 3 >> make sure that every occurance of `/lib/ld-musl-x86_64.so.1` doesn't have
 # the /tools prefix in front of it.
 
+grep "/lib/ld-musl-x86_64.so.1" tempspecfile --color=auto
+
 # 4.1 >> make sure that the following looks exacty like this
 #  *startfile_prefix_spec:
 #  /usr/lib
 
+grep "*startfile_prefix_spec:" tempspecfile --color=auto
+grep "/usr/lib" tempspecfile --color=auto
+
 # 4.2
 #  *cpp:
 #  %{posix:-D_POSIX_SOURCE} %{pthread:-D_REENTRANT} -isystem /usr/include
+
+grep "*cpp:" tempspecfile --color=auto
+grep "%{posix:-D_POSIX_SOURCE} %{pthread:-D_REENTRANT} -isystem /usr/include" tempspecfile --color=auto
 
 # 5 >> if everything is the way they are described above, move the specs.
 mv -vf tempspecfile $SPECFILE && unset SPECFILE
