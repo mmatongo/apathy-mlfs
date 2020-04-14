@@ -1,5 +1,5 @@
 # set mlfs, create partition and mount it to $MLFS
-export    MLFS=/mnt/nl
+export    NL=/mnt/nl
 sudo mkfs.ext4 /dev/sdXY
 sudo mkdir -pv $NL
 sudo mount     /dev/sdXY $NL
@@ -69,7 +69,7 @@ export PATH=/cross-tools/bin:/tools/bin:/bin:/usr/bin
 
 export MAKEFLAGS="-j 3"
 
-export NL_TARGET="x86_64-mlfs-linux-musl"
+export NL_TARGET="x86_64-noir-linux-musl"
 export NL_HOST="x86_64-cross-linux-gnu"
 
 export NL_ARCH=x86
@@ -92,7 +92,7 @@ env -i HOME=$HOME TERM=$TERM /bin/yash
 # source .yashrc and check the variables
 . /home/mlfs/.yashrc
 
-printf " > MLFS\t: $MLFS\n" &&
+printf " > NL\t: $NL\n" &&
 printf " > LC_ALL\t: $LC_ALL\n" &&
 printf " > PATH\t: $PATH\n" &&
 printf " > NL_TARGET\t: $NL_TARGET\n" &&
