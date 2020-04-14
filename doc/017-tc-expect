@@ -2,30 +2,30 @@
 # source	https://prdownloads.sourceforge.net/expect/expect5.45.3.tar.gz
 
 # 0
-export CC="${MLFS_TARGET}-gcc"
-export CXX="${MLFS_TARGET}-g++"
-export AR="${MLFS_TARGET}-ar"
-export AS="${MLFS_TARGET}-as"
-export RANLIB="${MLFS_TARGET}-ranlib"
-export LD="${MLFS_TARGET}-ld"
-export STRIP="${MLFS_TARGET}-strip"
+export CC="${NL_TARGET}-gcc" &&
+export CXX="${NL_TARGET}-g++" &&
+export AR="${NL_TARGET}-ar" &&
+export AS="${NL_TARGET}-as" &&
+export RANLIB="${NL_TARGET}-ranlib" &&
+export LD="${NL_TARGET}-ld" &&
+export STRIP="${NL_TARGET}-strip"
 
 # 1 >> patch tp allow cross compile
-patch -Np1 -i "${patchdir}"/expect-5.45.3/expect-5.45.3-dont-put-toolchain-in-libpath.patch
-patch -Np1 -i "${patchdir}"/expect-5.45.3/expect-5.45.3-dont-configure-testsuites.patch
+patch -Np1 -i "${patchdir}"/expect-5.45.3/expect-5.45.3-dont-put-toolchain-in-libpath.patch &&
+patch -Np1 -i "${patchdir}"/expect-5.45.3/expect-5.45.3-dont-configure-testsuites.patch &&
 patch -Np1 -i "${patchdir}"/expect-5.45.3/expect-5.45.3-allow-cross-compile.patch
 
 # 2 >> make configure see the musl-linux triplet
-cp -v ${filesdir}/musl-1.1.24/config.sub-musl tclconfig/config.sub
+cp -v ${filesdir}/musl-1.1.24/config.sub-musl tclconfig/config.sub &&
 cp -v ${filesdir}/musl-1.1.24/config.guess-musl tclconfig/config.guess
 
-cp -v configure{,.orig}
+cp -v configure{,.orig} &&
 sed 's:/usr/local/bin:/bin:' configure.orig > configure
 
 # 3
 ./configure \
- --build=${MLFS_HOST} \
- --host=${MLFS_TARGET} \
+ --build=${NL_HOST} \
+ --host=${NL_TARGET} \
  --prefix=/tools \
  --with-tcl=/tools/lib \
  --with-tclinclude=/tools/include
