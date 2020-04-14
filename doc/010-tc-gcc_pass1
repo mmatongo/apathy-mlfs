@@ -48,11 +48,11 @@ sed -e '/m64=/s/lib64/lib/' -i.orig gcc/config/i386/t-linux64
 # 5
 mkdir -v build && cd build
 ../configure \
- --target=${MLFS_TARGET} \
- --build=${MLFS_HOST} \
- --host=${MLFS_TARGET} \
+ --target=${NL_TARGET} \
+ --build=${NL_HOST} \
+ --host=${NL_TARGET} \
  --prefix=/tools \
- --with-sysroot=$MLFS \
+ --with-sysroot=$NL \
  --with-newlib \
  --without-headers \
  --with-local-prefix=/tools \
