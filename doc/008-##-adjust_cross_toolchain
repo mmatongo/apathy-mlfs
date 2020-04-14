@@ -4,8 +4,8 @@
 # otherwise gcc-pass1 of /tools will fail to build
 
 # 1 >> dump current cross-gcc specs 
-export SPECFILE=`dirname $(${MLFS_TARGET}-gcc -print-libgcc-file-name)`/specs
-${MLFS_TARGET}-gcc -dumpspecs > specs
+export SPECFILE=`dirname $(${NL_TARGET}-gcc -print-libgcc-file-name)`/specs &&
+${NL_TARGET}-gcc -dumpspecs > specs
 
 # 2 >> modify dumped specs file to add the /tools prefix.
 sed -i 's/\/lib\/ld-musl-x86_64.so.1/\/tools\/lib\/ld-musl-x86_64.so.1/g' specs
@@ -18,8 +18,8 @@ mv -v specs $SPECFILE && unset SPECFILE
 
 # 4 >> sanity check for the toolchain
 echo 'int main(){}' > dummy.c
-${MLFS_TARGET}-gcc dummy.c
-${MLFS_TARGET}-readelf -l a.out | grep Requesting
+${NL_TARGET}-gcc dummy.c
+${NL_TARGET}-readelf -l a.out | grep Requesting
 
 # i >> output should be:
 # [Requesting program interpreter: /tools/lib/ld-musl-x86_64.so.1]
