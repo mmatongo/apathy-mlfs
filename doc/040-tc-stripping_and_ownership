@@ -5,6 +5,11 @@ find /tools/lib -type f \( -name \*.so* -a ! -name \*dbg \) -exec strip --strip-
 find /tools/bin -type f -exec strip --strip-all {} ';'
 find /tools/libexec -type f -exec strip --strip-all {} ';'
 
+# 2 >> free up more space
+find "/tools" -name libgtkpeer.a  -exec rm -f {} +
+find "/tools" -name libgjsmalsa.a -exec rm -f {} +
+find "/tools" -name libgij.a      -exec rm -f {} +
+
 # 2 >> remove documentation and manual pages with:
 rm -rf /tools/{,share}/{info,man,doc}
 
