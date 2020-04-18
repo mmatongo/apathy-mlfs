@@ -11,7 +11,10 @@
 #patch -Np1 -i "${patchdir}"/musl-1.1.24/musl-1.1.24-i686-fix-rounding.patch
 
 # 3
-./configure --prefix=/usr -disable-gcc-wrapper
+./configure \
+    --prefix=/usr \
+    --syslibdir=/usr/lib \
+    --disable-gcc-wrapper
 
 # 4
 make && make install
