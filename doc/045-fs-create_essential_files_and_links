@@ -13,6 +13,7 @@ ln -sv bash /bin/sh
 ln -sv /tools/bin/busybox /bin/wget
 ln -sv /tools/bin/busybox /bin/vi
 ln -sv /tools/bin/busybox /bin/less
+ln -sv /tools/bin/busybox /bin/clear
 
 # 3 >> historically, linux maintains a list of the mounted file
 # systems the /etc/mtab file. modern linux maintains this
