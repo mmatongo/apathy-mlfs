@@ -5,16 +5,16 @@
 export NL=/mnt/nl
 
 # 1 >> create directories and nodes
-mkdir -pv $NL/{dev,proc,sys,run}
-mknod -m 600 $NL/dev/console c 5 1
-mknod -m 666 $NL/dev/null c 1 3
+sudo mkdir -pv $NL/{dev,proc,sys,run} &&
+sudo mknod -m 600 $NL/dev/console c 5 1 &&
+sudo mknod -m 666 $NL/dev/null c 1 3
 
 # 2 >> mount virtfs
-mount -v --bind /dev $NL/dev
-mount -vt devpts devpts $NL/dev/pts -o gid=5,mode=620
-mount -vt proc proc $NL/proc
-mount -vt sysfs sysfs $NL/sys
-mount -vt tmpfs tmpfs $NL/run
+sudo mount -v --bind /dev $NL/dev &&
+sudo mount -vt devpts devpts $NL/dev/pts -o gid=5,mode=620 &&
+sudo mount -vt proc proc $NL/proc &&
+sudo mount -vt sysfs sysfs $NL/sys &&
+sudo mount -vt tmpfs tmpfs $NL/run 
 if [ -h $NL/dev/shm ]; then
   mkdir -pv $NL/$(readlink $NL/dev/shm)
 fi
