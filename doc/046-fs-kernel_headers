@@ -20,3 +20,8 @@ find dest/include \( -name .install -o -name ..install.cmd \) -delete
 
 # 5
 cp -rv dest/include/* /usr/include
+
+
+
+##NOTE
+Kernel 5.4.33 will not compile without rsync
