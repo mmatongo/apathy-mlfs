@@ -1,4 +1,4 @@
-# tc:	linux 5.2.14 headers
+# tc:	linux 5.4.33 headers
 
 # 1
 make mrproper
