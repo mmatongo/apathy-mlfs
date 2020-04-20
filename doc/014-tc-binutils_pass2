@@ -1,4 +1,4 @@
-# tc:		binutils-2.32 - pass 2
+# tc:		binutils-2.34 - pass 2
 
 # 0
 export CC="${NL_TARGET}-gcc" &&
