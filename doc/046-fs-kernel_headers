@@ -1,10 +1,9 @@
 # ct:		linux 5.2.14 headers
 
 # 0.0 >> re-export dirs and makeflags since we've changed sessions
-export patchdir="/noir/work/patches"
-export saucedir="/noir/work/sources"
+export patchdir="/noir/work/patches" &&
+export saucedir="/noir/work/sources" &&
 export filesdir="/noir/work/files"
-export MAKEFLAGS="-j 3"
 
 # 1
 make mrproper
