@@ -40,6 +40,6 @@ cp -v iconv   /usr/bin/
 ln -s true /usr/bin/ldconfig
 
 # 9 >> install legacy compat headers
-cp -v "${filesdir}"/musl-1.1.24/legacy-compat/cdefs.h /usr/include/sys/ &&
-cp -v "${filesdir}"/musl-1.1.24/legacy-compat/queue.h /usr/include/sys/ &&
-cp -v "${filesdir}"/musl-1.1.24/legacy-compat/tree.h  /usr/include/sys/
+cp -v "${filesdir}"/musl-1.2.0/legacy-compat/cdefs.h /usr/include/sys/ &&
+cp -v "${filesdir}"/musl-1.2.0/legacy-compat/queue.h /usr/include/sys/ &&
+cp -v "${filesdir}"/musl-1.2.0/legacy-compat/tree.h  /usr/include/sys/
