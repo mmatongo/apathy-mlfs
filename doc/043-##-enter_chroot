@@ -7,7 +7,7 @@ sudo chroot \
          PATH=/bin:/usr/bin:/sbin:/usr/sbin:/tools/bin \
          /tools/bin/bash --login +h
 
-# 2 >> enter the chroot using bash.
+# 2 >> enter the chroot using ash.
 sudo chroot \
       "$NL" /tools/bin/env -i \
       HOME=/root \
