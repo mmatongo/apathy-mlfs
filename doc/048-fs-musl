@@ -32,14 +32,14 @@ cc -fpie "${filesdir}"/musl-1.2.0/getent.c   -o getent
 cc -fpie "${filesdir}"/musl-1.2.0/getconf.c  -o getconf
 cc -fpie "${filesdir}"/musl-1.2.0/iconv.c    -o iconv
 
-cp -v getent  /usr/bin/
-cp -v getconf /usr/bin/
+cp -v getent  /usr/bin/ &&
+cp -v getconf /usr/bin/ &&
 cp -v iconv   /usr/bin/
 
 # 8 >> fake a ldconfig for programs that call it
 ln -s true /usr/bin/ldconfig
 
 # 9 >> install legacy compat headers
-cp -v "${filesdir}"/musl-1.1.24/legacy-compat/cdefs.h /usr/include/sys/
-cp -v "${filesdir}"/musl-1.1.24/legacy-compat/queue.h /usr/include/sys/
+cp -v "${filesdir}"/musl-1.1.24/legacy-compat/cdefs.h /usr/include/sys/ &&
+cp -v "${filesdir}"/musl-1.1.24/legacy-compat/queue.h /usr/include/sys/ &&
 cp -v "${filesdir}"/musl-1.1.24/legacy-compat/tree.h  /usr/include/sys/
