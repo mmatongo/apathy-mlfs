@@ -1,4 +1,4 @@
-# ct:		linux 5.2.14 headers
+# ct:		linux 5.4.33 headers
 
 # 0.0 >> re-export dirs and makeflags since we've changed sessions
 export patchdir="/noir/work/patches" &&
@@ -9,7 +9,7 @@ export filesdir="/noir/work/files"
 make mrproper
 
 # 2 >> apply the libre patchset.
-patch -p1 < "${patchdir}"/linux-5.2.14/5.2-deblob-gnu.patch
+#patch -p1 < "${patchdir}"/linux-5.2.14/5.2-deblob-gnu.patch
 
 # 3
 make INSTALL_HDR_PATH=dest headers_install
