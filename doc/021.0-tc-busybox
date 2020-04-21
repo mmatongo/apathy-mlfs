@@ -16,3 +16,6 @@ make clean
 # 2 
 make LDFLAGS=-static
 cp busybox /tools/bin/
+
+# 3
+ln -sv ash /tools/bin/sh
