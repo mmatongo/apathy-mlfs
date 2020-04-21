@@ -1,9 +1,9 @@
 # fs:		adjust final system toolchain
 
 # 1 >> adjust the linker
-mv -v /tools/bin/ld /tools/bin/ld-old
-mv -v /tools/x86_64-noir-linux-musl/bin/ld /tools/x86_64-noir-linux-musl/bin/ld-old
-mv -v /tools/bin/ld-new /tools/bin/ld
+mv -v /tools/bin/ld /tools/bin/ld-old &&
+mv -v /tools/x86_64-noir-linux-musl/bin/ld /tools/x86_64-noir-linux-musl/bin/ld-old &&
+mv -v /tools/bin/ld-new /tools/bin/ld &&
 ln -sv /tools/bin/ld /tools/x86_64-noir-linux-musl/bin/ld
 
 # i >> you can use the busybox binary we compiled for ash to inspect the specs file.
