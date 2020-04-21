@@ -61,7 +61,7 @@ users:x:999:
 EOF
 
 # 5 >> start a new shell.
-exec /tools/bin/bash --login +h
+exec /tools/bin/busybox ash -l
 
 # 6 >> login, agetty and init programs use a number of log
 # files to record information. if these files don't exist
@@ -69,6 +69,6 @@ exec /tools/bin/bash --login +h
 # them proper permissions:
 touch /var/log/{btmp,lastlog,faillog,wtmp}
 
-chgrp -v utmp /var/log/lastlog
-chmod -v 664  /var/log/lastlog
+chgrp -v utmp /var/log/lastlog &&
+chmod -v 664  /var/log/lastlog &&
 chmod -v 600  /var/log/btmp
