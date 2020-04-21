@@ -10,7 +10,7 @@ mkdir -pv /usr/share/{color,dict,doc,info,locale,man} &&
 mkdir -v  /usr/share/{misc,terminfo,zoneinfo} &&
 mkdir -v  /usr/libexec
 
-mkdir -v /var/{log,mail,spool,db/{noir}}
+mkdir -v /var/{log,mail,spool,db}
 
 ln -sv /run /var/run &&
 ln -sv /run/lock /var/lock
