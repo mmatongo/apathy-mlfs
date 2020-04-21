@@ -1,8 +1,17 @@
-# 1 >> enter the chroot.
-chroot \
- "$NL" /tools/bin/env -i \
- HOME=/root \
- TERM="$TERM" \
- PS1='[nl chroot] \u:\w\% ' \
- PATH=/bin:/usr/bin:/sbin:/usr/sbin:/tools/bin \
- /tools/bin/bash --login +h
+# 1 >> enter the chroot using bash.
+sudo chroot \
+         "$NL" /tools/bin/env -i \
+         HOME=/root \
+         TERM="$TERM" \
+         PS1='[nl chroot] \u:\w\% ' \
+         PATH=/bin:/usr/bin:/sbin:/usr/sbin:/tools/bin \
+         /tools/bin/bash --login +h
+
+# 2 >> enter the chroot using bash.
+sudo chroot \
+      "$NL" /tools/bin/env -i \
+      HOME=/root \
+      SHELL=/bin/ash \
+      TERM="$TERM" \
+      PATH=/bin:/usr/bin:/sbin:/usr/sbin:/tools/bin \
+      /tools/bin/busybox ash -l
