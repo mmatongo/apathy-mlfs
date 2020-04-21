@@ -2,17 +2,17 @@
 # do not exist in the current state of the system yet. create
 # symlinks for them now and they will be replaced once the
 # real program gets installed
-ln -sv /tools/bin/{bash,cat,dd,echo,ln,pwd,rm,stty} /bin
-ln -sv /tools/bin/{install,perl} /usr/bin
-ln -sv /tools/lib/libgcc_s.so{,.1} /usr/lib
-ln -sv /tools/lib/libstdc++.{a,so{,.6}} /usr/lib
+ln -sv /tools/bin/{bash,cat,dd,echo,ln,pwd,rm,stty} /bin &&
+ln -sv /tools/bin/{install,perl} /usr/bin &&
+ln -sv /tools/lib/libgcc_s.so{,.1} /usr/lib &&
+ln -sv /tools/lib/libstdc++.{a,so{,.6}} /usr/lib &&
 ln -sv bash /bin/sh 
 
 # 2 >> for ease of access, to use them before wget, vim and less
 # gets built, symlink them to busybox binary we built early on.
-ln -sv /tools/bin/busybox /bin/wget
-ln -sv /tools/bin/busybox /bin/vi
-ln -sv /tools/bin/busybox /bin/less
+ln -sv /tools/bin/busybox /bin/wget &&
+ln -sv /tools/bin/busybox /bin/vi &&
+ln -sv /tools/bin/busybox /bin/less &&
 ln -sv /tools/bin/busybox /bin/clear
 
 # 3 >> historically, linux maintains a list of the mounted file
