@@ -6,18 +6,18 @@ tar xf "${saucedir}"/isl-0.19.tar.xz
 mv -v isl-0.19 isl
 
 # 2 
-patch -Np0 -i "${patchdir}"/gcc-9.2.0/0010-ldbl128-config.patch
-patch -Np0 -i "${patchdir}"/gcc-9.2.0/ada-shared.patch
-patch -Np0 -i "${patchdir}"/gcc-9.2.0/darn.patch
-patch -Np0 -i "${patchdir}"/gcc-9.2.0/fix-cxxflags-passing.patch
-patch -Np0 -i "${patchdir}"/gcc-9.2.0/fix-musl-execinfo.patch
-patch -Np0 -i "${patchdir}"/gcc-9.2.0/gccgo-musl.patch
-patch -Np0 -i "${patchdir}"/gcc-9.2.0/invalid_tls_model.patch
-patch -Np0 -i "${patchdir}"/gcc-9.2.0/libffi_gnulinux.patch
-patch -Np0 -i "${patchdir}"/gcc-9.2.0/libgcc-musl-ldbl128-config.patch
-patch -Np1 -i "${patchdir}"/gcc-9.2.0/libgnarl-musl.patch
-patch -Np0 -i "${patchdir}"/gcc-9.2.0/musl-ada.patch
-patch -Np0 -i "${patchdir}"/gcc-9.2.0/no-stack_chk_fail_local.patch
+patch -Np0 -i "${patchdir}"/gcc-9.2.0/0010-ldbl128-config.patch &&
+patch -Np0 -i "${patchdir}"/gcc-9.2.0/ada-shared.patch &&
+patch -Np0 -i "${patchdir}"/gcc-9.2.0/darn.patch &&
+patch -Np0 -i "${patchdir}"/gcc-9.2.0/fix-cxxflags-passing.patch &&
+patch -Np0 -i "${patchdir}"/gcc-9.2.0/fix-musl-execinfo.patch &&
+patch -Np0 -i "${patchdir}"/gcc-9.2.0/gccgo-musl.patch &&
+patch -Np0 -i "${patchdir}"/gcc-9.2.0/invalid_tls_model.patch &&
+patch -Np0 -i "${patchdir}"/gcc-9.2.0/libffi_gnulinux.patch &&
+patch -Np0 -i "${patchdir}"/gcc-9.2.0/libgcc-musl-ldbl128-config.patch &&
+patch -Np1 -i "${patchdir}"/gcc-9.2.0/libgnarl-musl.patch &&
+patch -Np0 -i "${patchdir}"/gcc-9.2.0/musl-ada.patch &&
+patch -Np0 -i "${patchdir}"/gcc-9.2.0/no-stack_chk_fail_local.patch &&
 patch -Np0 -i "${patchdir}"/gcc-9.2.0/ppc64-pure64.patch
 
 # 3 >> change the default directory name for 64-bit libraries to /lib
@@ -68,13 +68,13 @@ libat_cv_have_ifunc=no \
 make && make install
 
 # 7 >> create historical symlinks:
-ln -sv ../usr/bin/cpp /lib
+ln -sv ../usr/bin/cpp /lib &&
 ln -sv gcc /usr/bin/cc
 
 # 8 >> enable lto with:
-install -v -dm755 /usr/lib/bfd-plugins
-ln -sfv ../../libexec/gcc/x86_64-linux-musl/9.2.0/liblto_plugin.so /usr/lib/bfd-plugins/
-mkdir -pv /usr/share/gdb/auto-load/usr/lib
+install -v -dm755 /usr/lib/bfd-plugins &&
+ln -sfv ../../libexec/gcc/x86_64-linux-musl/9.2.0/liblto_plugin.so /usr/lib/bfd-plugins/ &&
+mkdir -pv /usr/share/gdb/auto-load/usr/lib &&
 mv -v /usr/lib/*gdb.py /usr/share/gdb/auto-load/usr/lib
 
 # 9.0 >> dump the specs file
